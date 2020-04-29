@@ -81,7 +81,10 @@ const HOC = (Component, opts) => {
       <Component
         {...props}
         className={cn(className, [...styles.map(s => s.className)])}
-        styles={styles.map(s => s.styles)}
+        styles={styles.map((s, i) => ({
+          ...s.styles,
+          key: i
+        }))}
       >
         {children}
       </Component>

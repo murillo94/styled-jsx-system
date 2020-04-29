@@ -1,5 +1,5 @@
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import withStyledSystem, { ThemeProvider } from 'styled-jsx-system'
+import withStyledSystem, { ThemeProvider } from 'styled-jsx-with-system'
 import Box from '../components/box'
 import * as styledSystem from 'styled-system'
 

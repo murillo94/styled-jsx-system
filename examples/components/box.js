@@ -1,4 +1,4 @@
-import styledJsxSystem from 'styled-jsx-system'
+import styledJsxSystem from 'styled-jsx-with-system'
 import { color, typography, space } from 'styled-system'
 import css from '@styled-system/css'
 
