@@ -90,7 +90,15 @@ const Index = () => {
         <LiveError />
       </LiveProvider>
 
-      <Box color="blue" bg={['#FF0080', '#7928CA', '#0070F3']}>
+      <Box
+        color="blue"
+        bg={['#FF0080', '#7928CA', '#0070F3']}
+        sx={{
+          '&:hover': {
+            borderRadius: '90px'
+          }
+        }}
+      >
         Box component here
       </Box>
 

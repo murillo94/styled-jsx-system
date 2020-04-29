@@ -25,9 +25,17 @@ const createMediaQuery = (breakpoint, rules) =>
     }
   `
 
+const createPseudoClasse = (breakpoint, rules) =>
+  css.resolve`
+    ${breakpoint} {
+      ${objss(rules)}
+    }
+  `
+
 const styler = (props, opts, theme) => {
   const styleObjects = []
   const mediaQueries = []
+  const pseudoClasses = []
 
   opts.forEach(opt => {
     // Disable breakpoint cache because it causes hydration error on SSR
@@ -43,6 +51,9 @@ const styler = (props, opts, theme) => {
           .pop()
           .replace(')', '')
         mediaQueries.push(createMediaQuery(breakpoint, value))
+      } else if (key.startsWith('&')) {
+        const pseudo = key.split('&').pop()
+        pseudoClasses.push(createPseudoClasse(pseudo, value))
       } else {
         // Not a media query, just regular styling
         styleObjects.push({ [key]: value })
@@ -56,6 +67,7 @@ const styler = (props, opts, theme) => {
     css.resolve`
       ${objss(styles)}
     `,
+    ...pseudoClasses,
     ...mediaQueries
   ]
 }
